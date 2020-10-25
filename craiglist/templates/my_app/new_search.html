@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if error %}
+<h3 style="text-align: center;">Invalid city name!!</h3>
+{% else %}
+<h2 style = "text-align: center;"> NEW SEARCH </h2>
+<h2 style = "text-align: center;">You searched for {{search}}</h2>
+<div class='row'>
+  {% for post in postinglist %}
+  <div class="col s3">
+    <div class="card">
+        <div class="card-image">
+          {% if post.3 is None %}
+          <a href = "{{post.1}}"><img src="https://www.statisticbrain.com/wp-content/uploads/2012/04/craigslist-logo.jpg">
+          </a>
+          {% else %}
+          <a href = "{{post.1}}"><img src="{{post.3}}">
+          </a>
+          {% endif%}
+        </div>
+        <div class="card-content">
+          <a href = "{{post.1}}">{{post.0}}</a>
+        </div>
+        <div class="card-action">
+          <a href="{{post.1}}">{{post.2}}</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %}
+{% endblock content %}
